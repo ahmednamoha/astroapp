@@ -6,7 +6,7 @@ if ($("div.error").length > 0) {
     class: "bg-danger",
     title: "short Code",
     subtitle: "Erro",
-    body: "Fadlan Diwaangali midkale Kan horay ayuu ujiray",
+    body: "Fadlan Diwaangali  midkale Kan horay ayuu ujiray",
   });
 } else {
   alert(" maya lamhelin ");
