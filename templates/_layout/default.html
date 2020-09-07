@@ -235,14 +235,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- jquery-validation -->
     <script src="{% static 'plugins/jquery-validation/jquery.validate.min.js' %}"></script>
     <script src="{% static 'plugins/jquery-validation/additional-methods.min.js' %}"></script>
+    <script src="{% static 'dist/js/custom.js' %}"></script>
+
     <script type="text/javascript">
       $(document).ready(function () {
-        $('input[name$="file"]').addClass("custom-file-input");
         $.validator.setDefaults({
           // submitHandler: function () {
           //   alert("Form successful submitted!");
           // },
         });
+        function fun() {
+          alert("kkkkkkkkkkkk");
+        }
+
         $("#quickForm").validate({
           rules: {
             exten: {

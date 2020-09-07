@@ -1,11 +1,38 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect, render
+# from django.http import HttpResponse, HttpResponseRedirect
 from .models import Extentions
 from .forms import ExtentionsForm
 from django import forms
+from django.contrib import messages
 
 
 def index(request):
+    if request.method == 'POST':
+        form = ExtentionsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            print('-_'*100)
+            print(form.is_valid())
+            print(form.errors)
+            # return render(request, 'base.html', {'name': 'ahmed', 'form': form})
+            rul = 1
+            return redirect('/')
+
+        else:
+            print('*'*100)
+            print(form.is_valid())
+            print(form.errors)
+            print('#'*100)
+            # messages.error(request, "Error")
+            messages.error(
+                request, ' Numberkaan horay ayuu ujiray')
+            for errors in form.errors:
+                print(errors)
+            return render(request, 'base.html', {'name': 'ahmed', 'form': form})
+
+    else:
+        form = ExtentionsForm()
+
     form = ExtentionsForm()
 
     return render(request, 'base.html', {'name': 'ahmed', 'form': form})
@@ -14,24 +41,4 @@ def index(request):
 
 
 def add(request):
-    if request.method == 'POST':
-        form = ExtentionsForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            print('-_'*100)
-            print(form.is_valid())
-            print(form.errors)
-            return render(request, 'base.html')
-
-        else:
-            print('*'*100)
-            print(form.is_valid())
-            print(form.errors)
-            print('#'*100)
-            for errors in form.errors:
-                print(errors)
-
-    else:
-        form = ExtentionsForm()
-
-    return render(request, 'base.html')
+    return ""

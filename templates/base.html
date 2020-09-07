@@ -36,7 +36,7 @@
             <form
               role="form"
               id="quickForm"
-              action="add/"
+              action=""
               method="POST"
               enctype="multipart/form-data"
             >
@@ -44,17 +44,10 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Short code</label>
-                  {% if form.errors.exten %}
-                  <input
-                    type="number"
-                    class="form-control is-invalid"
-                    id="inputError"
-                    name="exten"
-                    value="exten"
-                    placeholder="Short code"
-                  />
-                  {% endif %} {% if not form.errors.exten %} {{form.exten }}
-                  {%endif%}
+
+                  {{form.exten }}
+                  <!-- <br> -->
+                  {% include 'massages/messages.html' %}
                 </div>
 
                 <div class="form-group">
