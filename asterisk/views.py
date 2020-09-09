@@ -9,6 +9,7 @@ from django.contrib import messages
 def index(request):
     if request.method == 'POST':
         form = ExtentionsForm(request.POST, request.FILES)
+        form2 = QueueForm(request.POST)
 
         if form.is_valid():
             form2data = {}
@@ -42,7 +43,10 @@ def index(request):
                 request, ' Numberkaan horay ayuu ujiray')
             for errors in form.errors:
                 print(errors)
-            return render(request, 'base.html', {'name': 'ahmed', 'form': form})
+            formall = {}
+            formall['form'] = form
+            formall['form2'] = form2
+            return render(request, 'base.html', formall)
 
     else:
         form = ExtentionsForm()
